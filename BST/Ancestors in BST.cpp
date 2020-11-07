@@ -106,7 +106,6 @@ int main()
 		l1=find_number(start,n1);
 		l2=find_number(start,n2);
 		cout<<"\neldest:"<<start->a;
-		Display(start,n1,n2);
 		if(n1>n2)
 		{
 			if(n2<start->a && n1>start->a)
