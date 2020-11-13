@@ -1,33 +1,43 @@
 #include <iostream>
-#include<vector>
 using namespace std;
-
-void check(Tree *ptr,vector<int>arr,int n,int sum=0)
+void heapify(int arr[20],int n)
 {
-    if(sum<n)
+    int temp;
+    for(int i=0;i<n;i++)
     {
-        if((sum+ptr->a)<=n)
+        if(2*i+1<n)
         {
-            sum=sum+ptr->a;
-            arr.push_back(ptr->a);
+            if(arr[i]<arr[2*i+1])
+            {
+                temp=arr[i];
+                arr[i]=arr[2*i+1];
+                arr[2*i+1]=temp;
+            }
+            if(arr[i]<arr[2*i+2])
+            {
+                temp=arr[i];
+                arr[i]=arr[2*i+2];
+                arr[2*i+2]=temp;
+            }
         }
-        else if(ptr->a==n)
-        {
-            cout<<"\nPath possible\n"<<ptr->a;
-            return;
-        }
-        
-        {
-            if(ptr->right!=NULL)
-                check(ptr->right,arr,n,sum);
-            if(ptr->left!=NULL)
-                check(ptr->left,arr,n,sum);
-        }    
+    }
+    cout<<"\nArray:\n";
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\t"<<arr[i];
     }
 }
 
 int main()
 {
-    vector<int>arr;
+    int arr[20],n;
+    cout<<"\nEnter number of elements:";
+    cin>>n;
+    for(int i=0;i<n;i++)
+    {
+        cout<<"\nEnter element:";
+        cin>>arr[i];
+    }
+    heapify(arr,n);
     return 0;
 }
