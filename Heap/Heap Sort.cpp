@@ -6,7 +6,7 @@ void arrange(int arr[20],int n);
 void heapify(int arr[20],int n)
 {
     int temp;
-    for(int i=0;i<n;i++)
+    for(int i=n/2;i>=0;i--)
     {
         if((2*i)+1<n)
         {
@@ -17,8 +17,6 @@ void heapify(int arr[20],int n)
                 arr[(2*i)+1]=temp;
             }
         }
-        else
-        	break;
         
         if((2*i)+2<n)
             if(arr[i]<arr[(2*i)+2])
@@ -28,23 +26,26 @@ void heapify(int arr[20],int n)
                 arr[(2*i)+2]=temp;
             }
     }
-    cout<<"\n";
-    for(int i=0;i<n;i++)
-    {
-        cout<<"\t"<<arr[i];
-    }
+    
+    {	
+	    cout<<"\nSorted Array:\n";
+	    for(int i=0;i<n;i++)
+	    {
+	        cout<<"\t"<<arr[i];
+	    }
+	}
     arrange(arr,n);
 }
 
 void arrange(int arr[20],int n)
 {
 	int temp;
-	if(n>=1)
+	if(n>1)
 	{
 		temp=arr[0];
 		arr[0]=arr[n-1];
 		arr[n-1]=temp;
-		cout<<"\nlast element:"<<cout<<arr[n-1];
+		cout<<"\nlast element:"<<arr[n-1];
 		heapify(arr,n-1);
 	}
 	
@@ -59,9 +60,10 @@ int main()
         cout<<"\nEnter element:";
         cin>>arr[i];
     }
-    heapify(arr,n);   
+    heapify(arr,n);  
+	 
 	{	
-	    cout<<"\nArray:\n";
+	    cout<<"\nSorted Array:\n";
 	    for(int i=0;i<n;i++)
 	    {
 	        cout<<"\t"<<arr[i];
