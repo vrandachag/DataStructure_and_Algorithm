@@ -67,11 +67,6 @@ int main()
 			goto label;
 		}
 		int idx = smallest(BT,temp);
-		if(WT[idx] == 0)
-		{
-			WT[idx] = cpu_time - arr_time[idx];
-			avg_wt += WT[idx];
-		}
 
 		CT[idx] = ++cpu_time;
 		BT[idx]--;
