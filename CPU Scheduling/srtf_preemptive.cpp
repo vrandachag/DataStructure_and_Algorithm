@@ -77,18 +77,16 @@ int main()
 		BT[idx]--;
 		if(BT[idx] == 0)
 			complete.push_back(idx);
-		if(WT[idx] == 0)
-		{
-		}
 	}
 
 		for(int idx = 0 ; idx < process;idx++)
 		{
-			WT[idx] = CT[idx]- arr_time[idx]-BT_copy[idx];
+			TAT[idx] = CT[idx] - arr_time[idx];
+			avg_tat += TAT[idx];
+
+			WT[idx] = TAT[idx] - BT_copy[idx];
 			avg_wt += WT[idx];
 
-			TAT[idx] = WT[idx] + BT_copy[idx];
-			avg_tat += TAT[idx];
 		}
 
 		cout<<setw(7)<<"\nProcess"<<setw(5)<<"AT"<<setw(5)<<"BT"<<setw(5)<<"CT"<<setw(5)<<"TAT"<<setw(5)<<"WT";
